@@ -1,40 +1,80 @@
 # atencion_clientes_decisiontreeclassifier
 
-🎯 Objetivo del Proyecto
-El objetivo de este proyecto fue analizar y predecir la probabilidad de conciliación de quejas registradas ante tres compañías específicas (Walmart, Aeroméxico y Bradescard), con base en características como el tiempo de resolución, el monto recuperado, y aspectos del proceso de atención como el medio de ingreso, procedimiento y modalidad de compra.
-Se buscó identificar los factores más influyentes en la resolución efectiva de quejas, con el fin de proponer estrategias orientadas a mejorar la atención al cliente, la satisfacción y la retención.
+# 🧠 Proyecto: Análisis y Predicción de Conciliación de Quejas – Atención al Cliente
 
-🧭 Metodología de trabajo
-1. Filtrado del dataset
-Se partió de un conjunto amplio de datos de quejas, del cual se seleccionaron únicamente los casos correspondientes a las compañías Walmart, Aeroméxico y Bradescard, permitiendo un enfoque específico y aplicable.
+Este proyecto tiene como objetivo analizar y predecir la probabilidad de que una queja presentada por clientes ante compañías como **Walmart**, **Aeroméxico** y **Bradescard** sea conciliada exitosamente, utilizando técnicas de análisis de datos y machine learning.
 
-2. Limpieza y transformación de datos
-Se normalizaron los nombres de columnas (minúsculas y sin espacios).
+---
 
-Se convirtieron las columnas de fechas al tipo datetime.
+## 🎯 Objetivo
 
-Se creó la variable dias_resolucion como la diferencia entre la fecha de ingreso y la fecha de fin de la queja.
+Identificar los factores clave que influyen en la conciliación de quejas con el fin de:
+- Mejorar la **atención al cliente**
+- Reducir el **tiempo de resolución**
+- Prevenir el **abandono o insatisfacción**
 
-Se eliminaron o imputaron valores nulos relevantes según su contexto.
+---
 
-Se codificaron variables categóricas usando One-Hot Encoding.
+## 📁 Dataset
 
-3. Definición de la variable objetivo
-Se creó una columna binaria llamada es_conciliado para identificar si una queja fue conciliada exitosamente (1) o no conciliada / desistida (0), en función del estado procesal.
+Se utilizó un dataset público de quejas y devoluciones, del cual se filtraron más de 4,000 casos correspondientes a las tres compañías mencionadas.  
+Columnas relevantes:
+- `fecha_ingreso`, `fecha_fin`, `monto_recuperado`, `modalidad_compra`, `procedimiento`, etc.
 
-4. Modelado predictivo
-Se entrenó un modelo de clasificación usando árbol de decisión, con una división 70/30 entre datos de entrenamiento y prueba.
-El modelo alcanzó una exactitud del 94%, con un F1-score balanceado de 0.91 a 0.96 entre clases, demostrando capacidad para identificar correctamente casos con alta probabilidad de resolución.
+---
 
-5. Interpretación e insights
-Se identificaron las variables más influyentes, como:
+## 🔧 Proceso de trabajo
 
-Días de resolución
+1. **Carga y limpieza de datos**
+   - Normalización de nombres de columnas
+   - Conversión de fechas a tipo datetime
+   - Cálculo de días de resolución (`dias_resolucion`)
+   - Eliminación de columnas vacías o irrelevantes
 
-Monto recuperado
+2. **Creación de variable objetivo**
+   - `es_conciliado = 1` si el estado procesal fue "Conciliada", `0` en caso contrario
 
-Tipo de procedimiento
+3. **Codificación de variables categóricas**
+   - Uso de `One-Hot Encoding` para variables como `modalidad_compra` y `procedimiento`
 
-Medio de ingreso
+4. **Entrenamiento de modelo**
+   - Árbol de decisión (`DecisionTreeClassifier`)
+   - División 70/30 entrenamiento/prueba
 
-Esto permitió derivar recomendaciones prácticas para optimizar la atención y reducir el tiempo de respuesta.
+5. **Evaluación**
+   - Accuracy del modelo: **94%**
+   - F1-score: balanceado entre clases (0.91 – 0.96)
+
+---
+
+## 📊 Resultados
+
+- **Factores más influyentes**:
+  - Tiempo de resolución
+  - Monto recuperado
+  - Tipo de procedimiento
+- Casos conciliados suelen resolverse en menos de 15 días y con atención personalizada
+
+---
+
+## 💡 Conclusiones
+
+> Un análisis efectivo del tiempo de atención, junto con la personalización en los procedimientos y compensaciones, permite predecir con alta precisión la probabilidad de conciliación.  
+> Estas herramientas permiten tomar decisiones anticipadas para **mejorar la experiencia del cliente** y reducir quejas sin resolver.
+
+---
+
+## 🛠️ Herramientas
+
+- Python
+- Pandas
+- Scikit-learn
+- Matplotlib / Seaborn
+- Árboles de decisión
+
+---
+
+## 📎 Autor
+
+**Julieta Rivera Zamora**  
+
